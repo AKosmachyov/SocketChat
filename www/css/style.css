@@ -1,1 +1,3 @@
-/* Empty. Add your own CSS if you like */
+ion-footer-bar > button i {
+    font-size: 30px;
+}
