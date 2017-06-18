@@ -1,12 +1,17 @@
-<ion-view>
+<ion-view ng-controller="ChatController as ChatCtrl">
     <ion-content class="content-stable">
+        <ul>
+            <li ng-repeat="message in ChatCtrl.messages" >
+                <span>{{message.username}}: {{message.message}}</span>
+            </li>
+        </ul>
     </ion-content>
     
     <ion-footer-bar keyboard-attach class="bar bar-stable item-input-inset">
         <label class="item-input-wrapper">
-            <input type="text" placeholder="Type your message"/>
+            <input type="text" placeholder="Type your message" ng-model="text"/>
         </label>
-        <button class="button button-clear">
+        <button class="button button-clear" ng-click="ChatCtrl.addMessage()">
             <i class="ion-ios-email-outline"></i>
         </button>
     </ion-footer-bar>
