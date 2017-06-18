@@ -1,0 +1,14 @@
+<ion-view class="light">
+    <ion-content ng-controller="LoginController as login">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="Your name" ng-model="login.userName">
+            </label>
+        </div>
+        <div class="padding">
+            <button class="button button-block button-calm" ng-click="login.join()">
+                Sign In
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
