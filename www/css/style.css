@@ -1,3 +1,7 @@
 ion-footer-bar > button i {
     font-size: 30px;
 }
+ion-content li {
+    font-size: 20px;
+    margin: 10px 10px;
+}

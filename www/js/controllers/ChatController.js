@@ -1,4 +1,4 @@
-app.controller('ChatController', function($scope, $sanitize, socket) {
+app.controller('ChatController', function($scope, $sanitize, socket, authorization) {
     const self = this;
 	self.messages = [];
 
@@ -17,12 +17,13 @@ app.controller('ChatController', function($scope, $sanitize, socket) {
     });
     
     self.addMessage = () => {
+        let username = authorization.get();
         let text = $sanitize($scope.text);
-        if (!text)
+        if (!text || !username)
             return;
         let message = {
             message: text,
-            username: "test"
+            username: username
         };
         socket.emit('new message', text);     
         self.messages.push(message);
