@@ -2,17 +2,23 @@
     <ion-content class="content-stable">
         <ul>
             <li ng-repeat="message in ChatCtrl.messages" >
-                <div>{{message.username}}: {{message.message}}</div>
+                <div ng-if="!message.isInfo">{{message.username}}: {{message.message}}</div>
+                <div class="info" ng-if="message.isInfo">
+                    <div>{{message.message}}</div>
+                    <div>There are {{message.numUsers}} participants</div>
+                </div>
             </li>
         </ul>
     </ion-content>
     
     <ion-footer-bar keyboard-attach class="bar bar-stable item-input-inset">
-        <label class="item-input-wrapper">
-            <input type="text" placeholder="Type your message" ng-model="text"/>
-        </label>
-        <button class="button button-clear" ng-click="ChatCtrl.addMessage()">
-            <i class="ion-ios-email-outline"></i>
-        </button>
+        <form ng-submit="ChatCtrl.sendMessage(text)">
+            <label class="item-input-wrapper">
+                <input type="text" placeholder="Type your message" ng-model="text"/>
+            </label>
+            <button class="button button-clear" type="submit">
+                <i class="ion-ios-email-outline"></i>
+            </button>
+        </form>
     </ion-footer-bar>
 </ion-view>
