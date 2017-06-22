@@ -31,8 +31,8 @@ Make sure you have [Node.js, npm](https://nodejs.org/) installed.
 4. Now, we need to tell ionic that we want to enable the iOS and Android platforms. Note: unless you are on MacOS, leave out the iOS platform:
 
     ```
-    $ ionic platform add android
-    $ ionic platform add ios
+    $ ionic cordova platform add android
+    $ ionic cordova platform add ios
     ```
     
 5. Test it out.
