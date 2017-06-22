@@ -1,7 +1,8 @@
 {
-  "name": "HelloIonic",
+  "name": "SocketChat",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.3.3"
+    "ionic": "driftyco/ionic-bower#1.3.3",
+    "socket.io-client": "^2.0.3"
   }
 }
