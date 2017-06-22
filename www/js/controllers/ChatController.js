@@ -1,4 +1,4 @@
-app.controller('ChatController', function($scope, $sanitize, $ionicScrollDelegate , socket, authorization) {
+app.controller('ChatController', function($scope, $ionicScrollDelegate , socket, authorization) {
     const self = this;
 	self.messages = [];
 
@@ -25,7 +25,7 @@ app.controller('ChatController', function($scope, $sanitize, $ionicScrollDelegat
     
     self.sendMessage = () => {
         let username = authorization.get();
-        let text = $sanitize($scope.text);
+        let text = $scope.text;
         if (!text || !username)
             return;
         let message = self.createUserMessage({
@@ -56,7 +56,7 @@ app.controller('ChatController', function($scope, $sanitize, $ionicScrollDelegat
         if (!data.numUsers)
             return null;
         if (data.username) {
-            var message = isNew ? `${data.username} joined`: `${data.username} left`;
+            var message = isJoined ? `${data.username} joined`: `${data.username} left`;
         } else {
             var message = "Welcome to the Socket-Chat";    
         }

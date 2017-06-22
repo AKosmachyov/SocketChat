@@ -18,17 +18,16 @@ const app = angular.module('starter', ['ionic'])
   });
 })
 
- .config(function($stateProvider, $urlRouterProvider)
-    {
-      $stateProvider
-      .state('chat', {
-        url: "/chat",
-        templateUrl: "templates/chat.html"
-      })
-      .state('login', {
-        url: "/login",
-        templateUrl: "templates/login.html"
-      });
-      
-      $urlRouterProvider.otherwise('/login');
+.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('chat', {
+      url: "/chat",
+      templateUrl: "templates/chat.html"
     })
+    .state('login', {
+      url: "/login",
+      templateUrl: "templates/login.html"
+    }); 
+
+    $urlRouterProvider.otherwise('/login');
+})

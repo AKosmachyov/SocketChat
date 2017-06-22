@@ -2,14 +2,17 @@ ion-footer-bar > form {
     display: flex;
     width: 100%
 }
-ion-footer-bar > form i{
-    font-size: 30px;
-}
 ion-content li {
     font-size: 20px;
     margin: 10px 10px;
 }
+.send-button{
+    font-size: 35px !important;
+}
 .info {
     text-align: center;
     color: #aaaaaa;
+}
+.back-button {
+    color: white !important;
 }
