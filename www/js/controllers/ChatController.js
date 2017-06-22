@@ -1,4 +1,4 @@
-app.controller('ChatController', function($scope, $sanitize, socket, authorization) {
+app.controller('ChatController', function($scope, $sanitize, $ionicScrollDelegate , socket, authorization) {
     const self = this;
 	self.messages = [];
 
@@ -13,7 +13,12 @@ app.controller('ChatController', function($scope, $sanitize, socket, authorizati
             self.addMessage(message);
     });
     socket.on('user left', function (data) {
-        let message = self.createInfoMessage(data, false);
+        let message = self.createInfoMessage(data);
+        if (message)
+            self.addMessage(message);
+    });
+    socket.on('login', function (data) {
+        let message = self.createInfoMessage(data);
         if (message)
             self.addMessage(message);
     });
@@ -28,7 +33,7 @@ app.controller('ChatController', function($scope, $sanitize, socket, authorizati
             username: username
         });
         socket.emit('new message', text);     
-        self.messages.push(message);
+        self.addMessage(message);
         $scope.text = '';
     };
 
@@ -36,6 +41,7 @@ app.controller('ChatController', function($scope, $sanitize, socket, authorizati
         if(!message)
             return null;
         self.messages.push(message);
+        self.scrollBottom();
     }
     self.createUserMessage = (data, isInfo) => {
         if (!(data.username && data.message))
@@ -46,14 +52,21 @@ app.controller('ChatController', function($scope, $sanitize, socket, authorizati
             username: data.username
         }
     }
-    self.createInfoMessage = (data, isNew) => {
-        if(!(data.username && data.numUsers))
+    self.createInfoMessage = (data, isJoined) => {
+        if (!data.numUsers)
             return null;
-        let message = isNew ? `${data.username} joined`: `${data.username} left`;
+        if (data.username) {
+            var message = isNew ? `${data.username} joined`: `${data.username} left`;
+        } else {
+            var message = "Welcome to the Socket-Chat";    
+        }
         return {
             isInfo: true,
             message: message,
             numUsers: data.numUsers
         }
     }
+    self.scrollBottom = function() {
+        $ionicScrollDelegate.scrollBottom(true);
+    };
 });

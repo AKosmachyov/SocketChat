@@ -3,11 +3,14 @@ app.factory('authorization', function ($rootScope) {
   var username;
   return {
     get: function () {
-        return self.username;
+      return self.username;
     },
     set: function(username) {
-        if(username)
-            self.username = username;
+      if(username)
+        self.username = username;
+    },
+    delete: function() {
+      self.username = undefined;
     }
   };
 });
